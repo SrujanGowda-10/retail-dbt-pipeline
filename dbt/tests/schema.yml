@@ -1,0 +1,7 @@
+version: 2
+
+datasets:
+ - name: assert_valid_unit_price
+   description: Unit price of a product should always be > 0
+ - name: assert_valid_quantity
+   description: Qunatity of a product should always be > 0
