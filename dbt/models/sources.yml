@@ -1,0 +1,8 @@
+version: 2
+
+sources:
+ - name: bq_source
+   database: e-object-459802-s8
+   schema: staging
+   tables:
+    - name: retail_cleaned

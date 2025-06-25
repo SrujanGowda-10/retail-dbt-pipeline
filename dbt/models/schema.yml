@@ -1,0 +1,67 @@
+version: 2
+
+models:
+ - name: dim_customers
+   description: Dimensional table having customers information.
+   columns:
+    - name: customer_id
+      description: Unique id for each customer. A primary key.
+      tests:
+       - not_null
+       - unique
+    - name: residing_country
+      description: residing country of customer
+      tests:
+       - not_null
+ - name: dim_products
+   description: Dimensional table having products information.
+   columns:
+    - name: product_code
+      description: Unique id for each product. A primary key.
+      tests:
+       - not_null
+       - unique
+ - name: fact_sales
+   description: Fact table having sales information.
+   columns:
+    - name: invoice_no
+      description: Invoice id for each transaction. The id's startng with 'C' are cancelled transaction.
+      tests:
+       - not_null
+    - name: product_code
+      description: Unique id for each product.
+      tests:
+       - not_null
+    - name: quantity
+      description: Quantity of a product for each transaction. Modified to have all positive numbers.
+      tests:
+       - not_null
+    - name: src_quantity
+      description: Original quantity of a product for each transaction. Has negative quantity for cancelled transaction.
+      tests:
+       - not_null
+    - name: unit_price
+      description: Price of the product.
+      tests:
+       - not_null
+    - name: customer_id
+      description: Unique id for each customer.
+      tests:
+       - not_null
+    - name: invoice_date
+      description: Timestamp of a transaction.
+      tests:
+       - not_null
+    - name: transaction_type
+      description: A falg to identify the transaction type.
+      tests:
+       - not_null
+       - accepted_values:
+          values: ['sold', 'cancelled']
+   tests:
+      - dbt_utils.unique_combination_of_columns:
+          combination_of_columns:
+            - invoice_no
+            - product_code
+            - customer_id
+          
