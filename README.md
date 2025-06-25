@@ -7,6 +7,9 @@ An end-to-end data engineering project that processes retail data using:
 - **DBT** for transformation, testing, and snapshotting
 - **Airflow (Astro CLI)** for orchestration
 
+## Input data
+The dataset used in this project is the **[Online Retail Dataset (UCI Repository)](https://archive.ics.uci.edu/ml/datasets/online+retail)**.
+
 ## Architecture Overview
 ![Data Pipeline img](https://github.com/user-attachments/assets/379d2d79-5cea-4e0a-a710-5dcd724e5dda)
 
